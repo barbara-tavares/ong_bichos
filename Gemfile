@@ -6,7 +6,7 @@ gem 'rails', '4.2.8'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.3.13'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -41,6 +41,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'ransack'
 gem "paperclip"
+gem 'bootstrap-sass'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views

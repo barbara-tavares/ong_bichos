@@ -1472,3 +1472,379 @@ Processing by Devise::SessionsController#new as HTML
   Rendered devise/shared/_links.html.erb (0.7ms)
   Rendered devise/sessions/new.html.erb within layouts/application (30.3ms)
 Completed 200 OK in 72ms (Views: 67.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-06-10 09:33:41 -0300
+Processing by AnimalsController#index as HTML
+  [1m[36mAnimal Load (0.5ms)[0m  [1mSELECT "animals".* FROM "animals"[0m
+  Rendered animals/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 53ms (Views: 50.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/animals/new" for 127.0.0.1 at 2019-06-10 09:34:12 -0300
+Processing by AnimalsController#new as HTML
+  Rendered animals/_form.html.erb (17.6ms)
+  Rendered animals/new.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 45ms (Views: 44.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-06-10 09:34:20 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (12.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (23.1ms)
+Completed 200 OK in 51ms (Views: 48.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-06-10 09:48:02 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AnimalsController#index as HTML
+Completed 401 Unauthorized in 14ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-06-10 09:48:02 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (34.3ms)
+Completed 200 OK in 527ms (Views: 518.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.self-98cf8b921d735662ff29abffd752835e67fa08af0765581a78f871251f268794.css?body=1" for 127.0.0.1 at 2019-06-10 09:48:03 -0300
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-06-10 09:55:56 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (24.4ms)
+Completed 200 OK in 84ms (Views: 79.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/animals.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2019-06-10 09:55:56 -0300
+
+
+Started GET "/assets/owners.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2019-06-10 09:55:56 -0300
+
+
+Started GET "/assets/scaffolds.self-95b3827042a9ca60605d63c81736eecef91423dc2e654fe8d4d1081b5b40b318.css?body=1" for 127.0.0.1 at 2019-06-10 09:55:56 -0300
+
+
+Started GET "/assets/application.self-98cf8b921d735662ff29abffd752835e67fa08af0765581a78f871251f268794.css?body=1" for 127.0.0.1 at 2019-06-10 09:55:56 -0300
+
+
+Started GET "/assets/bootstrap.min.self-a25e528dfbb86d0b84cebc5e9b0944c5be542d72fadbc3fde89316966cd8b2d1.css?body=1" for 127.0.0.1 at 2019-06-10 09:55:56 -0300
+
+
+Started GET "/assets/turbolinks.self-569ee74eaa15c1e2019317ff770b8769b1ec033a0f572a485f64c82ddc8f989e.js?body=1" for 127.0.0.1 at 2019-06-10 09:55:56 -0300
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2019-06-10 09:55:56 -0300
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2019-06-10 09:55:56 -0300
+
+
+Started GET "/assets/bootstrap.min.self-3f55ae7cb1e0ade8ec6caee602a1f92c77404301eca33b891f02f5418470abd1.js?body=1" for 127.0.0.1 at 2019-06-10 09:55:56 -0300
+
+
+Started GET "/assets/jquery-3.3.1.min.self-875821d1e3121b366b94ea86a07f3cbc5c76cb16a319bc62212c03a805ff20e9.js?body=1" for 127.0.0.1 at 2019-06-10 09:55:56 -0300
+
+
+Started GET "/assets/animals.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2019-06-10 09:55:56 -0300
+
+
+Started GET "/assets/owners.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2019-06-10 09:55:56 -0300
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 127.0.0.1 at 2019-06-10 09:55:56 -0300
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-06-10 09:56:20 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (50.3ms)
+Completed 200 OK in 621ms (Views: 607.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/animals-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 09:56:21 -0300
+
+
+Started GET "/assets/owners-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 09:56:21 -0300
+
+
+Started GET "/assets/scaffolds-51f49b5008181f9eb729a3c92d305d15.css?body=1" for 127.0.0.1 at 2019-06-10 09:56:21 -0300
+
+
+Started GET "/assets/bootstrap.min-d719af1c77af1a66654ba8d87e9f8652.css?body=1" for 127.0.0.1 at 2019-06-10 09:56:21 -0300
+
+
+Started GET "/assets/jquery_ujs-d44b3b3dafd4bce6a7eb6478f94735e7.js?body=1" for 127.0.0.1 at 2019-06-10 09:56:21 -0300
+
+
+Started GET "/assets/application-d0a2b34275fcf3edbd7a2089978a24fe.css?body=1" for 127.0.0.1 at 2019-06-10 09:56:21 -0300
+
+
+Started GET "/assets/jquery-54f33c3dfc0a5e69480497db01e9c26a.js?body=1" for 127.0.0.1 at 2019-06-10 09:56:21 -0300
+
+
+Started GET "/assets/turbolinks-e40008ceeab0f57eae86f1ac29bdda59.js?body=1" for 127.0.0.1 at 2019-06-10 09:56:21 -0300
+
+
+Started GET "/assets/bootstrap.min-0813c5440676cd5ee48459a923c88c25.js?body=1" for 127.0.0.1 at 2019-06-10 09:56:21 -0300
+
+
+Started GET "/assets/jquery-3.3.1.min-956eb70b0b75a7191db7ceee63adf8c7.js?body=1" for 127.0.0.1 at 2019-06-10 09:56:21 -0300
+
+
+Started GET "/assets/animals-53a9a4dea53370dfc94d943cbd2df955.js?body=1" for 127.0.0.1 at 2019-06-10 09:56:21 -0300
+
+
+Started GET "/assets/owners-53a9a4dea53370dfc94d943cbd2df955.js?body=1" for 127.0.0.1 at 2019-06-10 09:56:21 -0300
+
+
+Started GET "/assets/application-3ab1e9f8bfab143069549bff8824de9f.js?body=1" for 127.0.0.1 at 2019-06-10 09:56:21 -0300
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-06-10 10:00:34 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 126ms (Views: 122.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/animals-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 10:00:34 -0300
+
+
+Started GET "/assets/devise-563c3aa1f4837345dbc95d9162b741b6.css?body=1" for 127.0.0.1 at 2019-06-10 10:00:34 -0300
+
+
+Started GET "/assets/owners-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 10:00:34 -0300
+
+
+Started GET "/assets/scaffolds-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 10:00:34 -0300
+
+
+Started GET "/assets/jquery-54f33c3dfc0a5e69480497db01e9c26a.js?body=1" for 127.0.0.1 at 2019-06-10 10:00:34 -0300
+
+
+Started GET "/assets/bootstrap.min-d719af1c77af1a66654ba8d87e9f8652.css?body=1" for 127.0.0.1 at 2019-06-10 10:00:34 -0300
+
+
+Started GET "/assets/turbolinks-e40008ceeab0f57eae86f1ac29bdda59.js?body=1" for 127.0.0.1 at 2019-06-10 10:00:34 -0300
+
+
+Started GET "/assets/jquery_ujs-d44b3b3dafd4bce6a7eb6478f94735e7.js?body=1" for 127.0.0.1 at 2019-06-10 10:00:34 -0300
+
+
+Started GET "/assets/application-b1c89ffaa6f75f8fbc45325b514b53cf.css?body=1" for 127.0.0.1 at 2019-06-10 10:00:34 -0300
+
+
+Started GET "/assets/animals-53a9a4dea53370dfc94d943cbd2df955.js?body=1" for 127.0.0.1 at 2019-06-10 10:00:34 -0300
+
+
+Started GET "/assets/jquery-3.3.1.min-956eb70b0b75a7191db7ceee63adf8c7.js?body=1" for 127.0.0.1 at 2019-06-10 10:00:34 -0300
+
+
+Started GET "/assets/bootstrap.min-0813c5440676cd5ee48459a923c88c25.js?body=1" for 127.0.0.1 at 2019-06-10 10:00:34 -0300
+
+
+Started GET "/assets/owners-53a9a4dea53370dfc94d943cbd2df955.js?body=1" for 127.0.0.1 at 2019-06-10 10:00:34 -0300
+
+
+Started GET "/assets/application-3ab1e9f8bfab143069549bff8824de9f.js?body=1" for 127.0.0.1 at 2019-06-10 10:00:34 -0300
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-06-10 10:04:26 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (33.2ms)
+Completed 200 OK in 168ms (Views: 161.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/animals-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 10:04:27 -0300
+
+
+Started GET "/assets/owners-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 10:04:27 -0300
+
+
+Started GET "/assets/devise-30a6c5a217f79a72202e6dde902a10d3.css?body=1" for 127.0.0.1 at 2019-06-10 10:04:27 -0300
+
+
+Started GET "/assets/bootstrap.min-d719af1c77af1a66654ba8d87e9f8652.css?body=1" for 127.0.0.1 at 2019-06-10 10:04:27 -0300
+
+
+Started GET "/assets/scaffolds-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 10:04:27 -0300
+
+
+Started GET "/assets/application-3f9c1bc72985654b68637494530c2df7.css?body=1" for 127.0.0.1 at 2019-06-10 10:04:27 -0300
+
+
+Started GET "/assets/jquery-54f33c3dfc0a5e69480497db01e9c26a.js?body=1" for 127.0.0.1 at 2019-06-10 10:04:27 -0300
+
+
+Started GET "/assets/jquery_ujs-d44b3b3dafd4bce6a7eb6478f94735e7.js?body=1" for 127.0.0.1 at 2019-06-10 10:04:27 -0300
+
+
+Started GET "/assets/turbolinks-e40008ceeab0f57eae86f1ac29bdda59.js?body=1" for 127.0.0.1 at 2019-06-10 10:04:27 -0300
+
+
+Started GET "/assets/bootstrap.min-0813c5440676cd5ee48459a923c88c25.js?body=1" for 127.0.0.1 at 2019-06-10 10:04:27 -0300
+
+
+Started GET "/assets/jquery-3.3.1.min-956eb70b0b75a7191db7ceee63adf8c7.js?body=1" for 127.0.0.1 at 2019-06-10 10:04:27 -0300
+
+
+Started GET "/assets/animals-53a9a4dea53370dfc94d943cbd2df955.js?body=1" for 127.0.0.1 at 2019-06-10 10:04:27 -0300
+
+
+Started GET "/assets/owners-53a9a4dea53370dfc94d943cbd2df955.js?body=1" for 127.0.0.1 at 2019-06-10 10:04:27 -0300
+
+
+Started GET "/assets/application-3ab1e9f8bfab143069549bff8824de9f.js?body=1" for 127.0.0.1 at 2019-06-10 10:04:27 -0300
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-06-10 10:05:37 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (22.3ms)
+Completed 200 OK in 144ms (Views: 138.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/devise-5fadaa2df74f80ecb5c6666c6c7424e8.css?body=1" for 127.0.0.1 at 2019-06-10 10:05:37 -0300
+
+
+Started GET "/assets/animals-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 10:05:37 -0300
+
+
+Started GET "/assets/owners-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 10:05:37 -0300
+
+
+Started GET "/assets/scaffolds-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 10:05:37 -0300
+
+
+Started GET "/assets/bootstrap.min-d719af1c77af1a66654ba8d87e9f8652.css?body=1" for 127.0.0.1 at 2019-06-10 10:05:37 -0300
+
+
+Started GET "/assets/application-576c6c1f164007843568ec213bfbb836.css?body=1" for 127.0.0.1 at 2019-06-10 10:05:37 -0300
+
+
+Started GET "/assets/jquery-54f33c3dfc0a5e69480497db01e9c26a.js?body=1" for 127.0.0.1 at 2019-06-10 10:05:37 -0300
+
+
+Started GET "/assets/jquery_ujs-d44b3b3dafd4bce6a7eb6478f94735e7.js?body=1" for 127.0.0.1 at 2019-06-10 10:05:37 -0300
+
+
+Started GET "/assets/turbolinks-e40008ceeab0f57eae86f1ac29bdda59.js?body=1" for 127.0.0.1 at 2019-06-10 10:05:37 -0300
+
+
+Started GET "/assets/jquery-3.3.1.min-956eb70b0b75a7191db7ceee63adf8c7.js?body=1" for 127.0.0.1 at 2019-06-10 10:05:37 -0300
+
+
+Started GET "/assets/bootstrap.min-0813c5440676cd5ee48459a923c88c25.js?body=1" for 127.0.0.1 at 2019-06-10 10:05:37 -0300
+
+
+Started GET "/assets/animals-53a9a4dea53370dfc94d943cbd2df955.js?body=1" for 127.0.0.1 at 2019-06-10 10:05:37 -0300
+
+
+Started GET "/assets/owners-53a9a4dea53370dfc94d943cbd2df955.js?body=1" for 127.0.0.1 at 2019-06-10 10:05:37 -0300
+
+
+Started GET "/assets/application-3ab1e9f8bfab143069549bff8824de9f.js?body=1" for 127.0.0.1 at 2019-06-10 10:05:37 -0300
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-06-10 10:11:55 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 84ms (Views: 82.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/animals-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 10:11:55 -0300
+
+
+Started GET "/assets/devise-5fadaa2df74f80ecb5c6666c6c7424e8.css?body=1" for 127.0.0.1 at 2019-06-10 10:11:55 -0300
+
+
+Started GET "/assets/owners-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 10:11:55 -0300
+
+
+Started GET "/assets/scaffolds-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 10:11:55 -0300
+
+
+Started GET "/assets/jquery-54f33c3dfc0a5e69480497db01e9c26a.js?body=1" for 127.0.0.1 at 2019-06-10 10:11:55 -0300
+
+
+Started GET "/assets/bootstrap.min-d719af1c77af1a66654ba8d87e9f8652.css?body=1" for 127.0.0.1 at 2019-06-10 10:11:55 -0300
+
+
+Started GET "/assets/application-576c6c1f164007843568ec213bfbb836.css?body=1" for 127.0.0.1 at 2019-06-10 10:11:55 -0300
+
+
+Started GET "/assets/jquery_ujs-d44b3b3dafd4bce6a7eb6478f94735e7.js?body=1" for 127.0.0.1 at 2019-06-10 10:11:55 -0300
+
+
+Started GET "/assets/turbolinks-e40008ceeab0f57eae86f1ac29bdda59.js?body=1" for 127.0.0.1 at 2019-06-10 10:11:55 -0300
+
+
+Started GET "/assets/bootstrap.min-0813c5440676cd5ee48459a923c88c25.js?body=1" for 127.0.0.1 at 2019-06-10 10:11:55 -0300
+
+
+Started GET "/assets/animals-53a9a4dea53370dfc94d943cbd2df955.js?body=1" for 127.0.0.1 at 2019-06-10 10:11:55 -0300
+
+
+Started GET "/assets/jquery-3.3.1.min-956eb70b0b75a7191db7ceee63adf8c7.js?body=1" for 127.0.0.1 at 2019-06-10 10:11:55 -0300
+
+
+Started GET "/assets/owners-53a9a4dea53370dfc94d943cbd2df955.js?body=1" for 127.0.0.1 at 2019-06-10 10:11:55 -0300
+
+
+Started GET "/assets/application-3ab1e9f8bfab143069549bff8824de9f.js?body=1" for 127.0.0.1 at 2019-06-10 10:11:55 -0300
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-06-10 10:12:08 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (52.5ms)
+Completed 200 OK in 183ms (Views: 169.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/animals-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 10:12:08 -0300
+
+
+Started GET "/assets/owners-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 10:12:08 -0300
+
+
+Started GET "/assets/devise-5fadaa2df74f80ecb5c6666c6c7424e8.css?body=1" for 127.0.0.1 at 2019-06-10 10:12:08 -0300
+
+
+Started GET "/assets/scaffolds-796607c01dffd829ca909520c79a3ad4.css?body=1" for 127.0.0.1 at 2019-06-10 10:12:08 -0300
+
+
+Started GET "/assets/bootstrap.min-d719af1c77af1a66654ba8d87e9f8652.css?body=1" for 127.0.0.1 at 2019-06-10 10:12:08 -0300
+
+
+Started GET "/assets/application-576c6c1f164007843568ec213bfbb836.css?body=1" for 127.0.0.1 at 2019-06-10 10:12:08 -0300
+
+
+Started GET "/assets/jquery-54f33c3dfc0a5e69480497db01e9c26a.js?body=1" for 127.0.0.1 at 2019-06-10 10:12:08 -0300
+
+
+Started GET "/assets/jquery_ujs-d44b3b3dafd4bce6a7eb6478f94735e7.js?body=1" for 127.0.0.1 at 2019-06-10 10:12:08 -0300
+
+
+Started GET "/assets/turbolinks-e40008ceeab0f57eae86f1ac29bdda59.js?body=1" for 127.0.0.1 at 2019-06-10 10:12:08 -0300
+
+
+Started GET "/assets/bootstrap.min-0813c5440676cd5ee48459a923c88c25.js?body=1" for 127.0.0.1 at 2019-06-10 10:12:08 -0300
+
+
+Started GET "/assets/jquery-3.3.1.min-956eb70b0b75a7191db7ceee63adf8c7.js?body=1" for 127.0.0.1 at 2019-06-10 10:12:08 -0300
+
+
+Started GET "/assets/animals-53a9a4dea53370dfc94d943cbd2df955.js?body=1" for 127.0.0.1 at 2019-06-10 10:12:08 -0300
+
+
+Started GET "/assets/owners-53a9a4dea53370dfc94d943cbd2df955.js?body=1" for 127.0.0.1 at 2019-06-10 10:12:08 -0300
+
+
+Started GET "/assets/application-3ab1e9f8bfab143069549bff8824de9f.js?body=1" for 127.0.0.1 at 2019-06-10 10:12:08 -0300
