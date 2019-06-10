@@ -1,0 +1,10 @@
+<main role="main" class="container">
+ 
+  <p id="notice"><%= notice %></p>
+
+  <%= render :partial => @animal %>
+
+  <%= link_to 'Edit', edit_animal_path(@animal) %> |
+  <%= link_to 'Back', animals_path %>
+  
+</main>

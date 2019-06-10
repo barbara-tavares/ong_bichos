@@ -1,0 +1,1474 @@
+  [1m[36m (8.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (7.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateAnimals (20190610032645)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "animals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar, "cor" varchar, "porte" text, "data_nascimento" varchar, "date" varchar, "peso" float, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610032645"]]
+  [1m[35m (8.0ms)[0m  commit transaction
+Migrating to DeviseCreateUsers (20190610033627)
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610033627"]]
+  [1m[36m (7.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateOwners (20190610033848)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "owners" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar, "cpf" text, "data_nascimento" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610033848"]]
+  [1m[36m (7.3ms)[0m  [1mcommit transaction[0m
+Migrating to AddOwnerRefToAnimals (20190610034249)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "animals" ADD "owner_id" integer[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_animals_on_owner_id" ON "animals" ("owner_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610034249"]]
+  [1m[35m (5.4ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserRefToOwners (20190610034650)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "owners" ADD "user_id" integer[0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_owners_on_user_id" ON "owners" ("user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610034650"]]
+  [1m[36m (8.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_owners_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_owners_on_user_id' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddTipoAcaoToAnimals (20190610035417)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "animals" ADD "tipo_acao" varchar[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610035417"]]
+  [1m[36m (5.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.6ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_owners_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_owners_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddFotoToAnimals (20190610041141)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "animals" ADD "foto_file_name" varchar[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "animals" ADD "foto_content_type" varchar
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "animals" ADD "foto_file_size" integer[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "animals" ADD "foto_updated_at" datetime
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610041141"]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_owners_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_owners_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddDescricaoToAnimals (20190610044135)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "animals" ADD "descricao" varchar[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610044135"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_owners_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_owners_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (7.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (5.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateAnimals (20190610032645)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "animals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar, "cor" varchar, "porte" text, "data_nascimento" date, "peso" float, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610032645"]]
+  [1m[35m (5.2ms)[0m  commit transaction
+Migrating to DeviseCreateUsers (20190610033627)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.4ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610033627"]]
+  [1m[36m (7.3ms)[0m  [1mcommit transaction[0m
+Migrating to CreateOwners (20190610033848)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "owners" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar, "cpf" text, "data_nascimento" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610033848"]]
+  [1m[36m (8.0ms)[0m  [1mcommit transaction[0m
+Migrating to AddOwnerRefToAnimals (20190610034249)
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "animals" ADD "owner_id" integer[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_animals_on_owner_id" ON "animals" ("owner_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610034249"]]
+  [1m[35m (5.3ms)[0m  commit transaction
+Migrating to AddUserRefToOwners (20190610034650)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "owners" ADD "user_id" integer
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_owners_on_user_id" ON "owners" ("user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610034650"]]
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+Migrating to AddTipoAcaoToAnimals (20190610035417)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "animals" ADD "tipo_acao" varchar[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610035417"]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+Migrating to AddFotoToAnimals (20190610041141)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "animals" ADD "foto_file_name" varchar[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "animals" ADD "foto_content_type" varchar
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "animals" ADD "foto_file_size" integer[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "animals" ADD "foto_updated_at" datetime
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610041141"]]
+  [1m[35m (6.7ms)[0m  commit transaction
+Migrating to AddDescricaoToAnimals (20190610044135)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "animals" ADD "descricao" text
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610044135"]]
+  [1m[35m (6.4ms)[0m  commit transaction
+Migrating to AddEspecieToAnimals (20190610045100)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "animals" ADD "especie" varchar
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610045100"]]
+  [1m[35m (5.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_owners_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_owners_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36m (7.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (5.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateAnimals (20190610032645)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "animals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar, "cor" varchar, "porte" varchar, "data_nascimento" date, "peso" float, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610032645"]]
+  [1m[35m (7.3ms)[0m  commit transaction
+Migrating to DeviseCreateUsers (20190610033627)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.7ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.5ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610033627"]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateOwners (20190610033848)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "owners" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar, "cpf" text, "data_nascimento" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610033848"]]
+  [1m[36m (6.7ms)[0m  [1mcommit transaction[0m
+Migrating to AddOwnerRefToAnimals (20190610034249)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "animals" ADD "owner_id" integer[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_animals_on_owner_id" ON "animals" ("owner_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610034249"]]
+  [1m[35m (5.4ms)[0m  commit transaction
+Migrating to AddUserRefToOwners (20190610034650)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "owners" ADD "user_id" integer
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_owners_on_user_id" ON "owners" ("user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610034650"]]
+  [1m[36m (7.3ms)[0m  [1mcommit transaction[0m
+Migrating to AddTipoAcaoToAnimals (20190610035417)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "animals" ADD "tipo_acao" varchar[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610035417"]]
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+Migrating to AddFotoToAnimals (20190610041141)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "animals" ADD "foto_file_name" varchar[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "animals" ADD "foto_content_type" varchar
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "animals" ADD "foto_file_size" integer[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "animals" ADD "foto_updated_at" datetime
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610041141"]]
+  [1m[35m (7.2ms)[0m  commit transaction
+Migrating to AddDescricaoToAnimals (20190610044135)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "animals" ADD "descricao" text
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610044135"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+Migrating to AddEspecieToAnimals (20190610045100)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "animals" ADD "especie" varchar
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610045100"]]
+  [1m[35m (4.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_owners_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_owners_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36m (8.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (5.7ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateAnimals (20190610032645)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "animals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar, "cor" varchar, "porte" varchar, "data_nascimento" date, "peso" float, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610032645"]]
+  [1m[35m (7.7ms)[0m  commit transaction
+Migrating to DeviseCreateUsers (20190610033627)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610033627"]]
+  [1m[36m (7.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateOwners (20190610033848)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "owners" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar, "cpf" varchar, "data_nascimento" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610033848"]]
+  [1m[36m (7.5ms)[0m  [1mcommit transaction[0m
+Migrating to AddOwnerRefToAnimals (20190610034249)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "animals" ADD "owner_id" integer[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_animals_on_owner_id" ON "animals" ("owner_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610034249"]]
+  [1m[35m (5.3ms)[0m  commit transaction
+Migrating to AddUserRefToOwners (20190610034650)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "owners" ADD "user_id" integer
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_owners_on_user_id" ON "owners" ("user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610034650"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+Migrating to AddTipoAcaoToAnimals (20190610035417)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "animals" ADD "tipo_acao" varchar[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190610035417"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+Migrating to AddFotoToAnimals (20190610041141)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "animals" ADD "foto_file_name" varchar[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "animals" ADD "foto_content_type" varchar
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "animals" ADD "foto_file_size" integer[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "animals" ADD "foto_updated_at" datetime
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610041141"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+Migrating to AddDescricaoToAnimals (20190610044135)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "animals" ADD "descricao" text
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610044135"]]
+  [1m[35m (4.7ms)[0m  commit transaction
+Migrating to AddEspecieToAnimals (20190610045100)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "animals" ADD "especie" varchar
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610045100"]]
+  [1m[35m (5.9ms)[0m  commit transaction
+Migrating to AddContatoToOwners (20190610051028)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "owners" ADD "contato" varchar
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190610051028"]]
+  [1m[35m (5.2ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_animals_on_owner_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_owners_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_owners_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+
+
+Started GET "/" for 127.0.0.1 at 2019-06-10 02:20:30 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AnimalsController#index as HTML
+  [1m[35mAnimal Load (0.1ms)[0m  SELECT "animals".* FROM "animals"
+  Rendered animals/index.html.erb within layouts/application (3.2ms)
+Completed 500 Internal Server Error in 180ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (couldn't find file 'chosen' with type 'text/css'
+Checked in these paths: 
+  /home/cristiano/projetos/ong_bichos/app/assets/images
+  /home/cristiano/projetos/ong_bichos/app/assets/javascripts
+  /home/cristiano/projetos/ong_bichos/app/assets/stylesheets
+  /home/cristiano/projetos/ong_bichos/vendor/assets/javascripts
+  /home/cristiano/projetos/ong_bichos/vendor/assets/stylesheets
+  /home/cristiano/.rvm/gems/ruby-2.1.10/gems/jquery-rails-4.3.3/vendor/assets/javascripts
+  /home/cristiano/.rvm/gems/ruby-2.1.10/gems/coffee-rails-4.1.1/lib/assets/javascripts
+  /home/cristiano/.rvm/gems/ruby-2.1.10/gems/turbolinks-source-5.2.0/lib/assets/javascripts):
+    2: <html>
+    3: <head>
+    4:   <title>OngBichos</title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/assets/stylesheets/application.css:16
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___1479598584900407417_46955243562020'
+
+
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (18.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (33.9ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (50.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-06-10 02:21:07 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AnimalsController#index as HTML
+  [1m[35mAnimal Load (0.2ms)[0m  SELECT "animals".* FROM "animals"
+  Rendered animals/index.html.erb within layouts/application (4.7ms)
+Completed 500 Internal Server Error in 177ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (couldn't find file 'chosen' with type 'text/css'
+Checked in these paths: 
+  /home/cristiano/projetos/ong_bichos/app/assets/images
+  /home/cristiano/projetos/ong_bichos/app/assets/javascripts
+  /home/cristiano/projetos/ong_bichos/app/assets/stylesheets
+  /home/cristiano/projetos/ong_bichos/vendor/assets/javascripts
+  /home/cristiano/projetos/ong_bichos/vendor/assets/stylesheets
+  /home/cristiano/.rvm/gems/ruby-2.1.10/gems/jquery-rails-4.3.3/vendor/assets/javascripts
+  /home/cristiano/.rvm/gems/ruby-2.1.10/gems/coffee-rails-4.1.1/lib/assets/javascripts
+  /home/cristiano/.rvm/gems/ruby-2.1.10/gems/turbolinks-source-5.2.0/lib/assets/javascripts):
+    2: <html>
+    3: <head>
+    4:   <title>OngBichos</title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/assets/stylesheets/application.css:16
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___2687516344289836132_47371468765120'
+
+
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (17.0ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (30.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (45.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-06-10 02:24:59 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AnimalsController#index as HTML
+  [1m[35mAnimal Load (0.3ms)[0m  SELECT "animals".* FROM "animals"
+  Rendered animals/index.html.erb within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 171ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (couldn't find file 'chosen' with type 'text/css'
+Checked in these paths: 
+  /home/cristiano/projetos/ong_bichos/app/assets/images
+  /home/cristiano/projetos/ong_bichos/app/assets/javascripts
+  /home/cristiano/projetos/ong_bichos/app/assets/stylesheets
+  /home/cristiano/projetos/ong_bichos/vendor/assets/javascripts
+  /home/cristiano/projetos/ong_bichos/vendor/assets/stylesheets
+  /home/cristiano/.rvm/gems/ruby-2.1.10/gems/jquery-rails-4.3.3/vendor/assets/javascripts
+  /home/cristiano/.rvm/gems/ruby-2.1.10/gems/coffee-rails-4.1.1/lib/assets/javascripts
+  /home/cristiano/.rvm/gems/ruby-2.1.10/gems/turbolinks-source-5.2.0/lib/assets/javascripts):
+    2: <html>
+    3: <head>
+    4:   <title>OngBichos</title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/assets/stylesheets/application.css:16
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___1013719687470899581_47203264073060'
+
+
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (16.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (35.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (53.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-06-10 02:27:46 -0300
+Processing by AnimalsController#index as HTML
+  [1m[36mAnimal Load (0.2ms)[0m  [1mSELECT "animals".* FROM "animals"[0m
+  Rendered animals/index.html.erb within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 91ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (couldn't find file 'chosen' with type 'application/javascript'
+Checked in these paths: 
+  /home/cristiano/projetos/ong_bichos/app/assets/images
+  /home/cristiano/projetos/ong_bichos/app/assets/javascripts
+  /home/cristiano/projetos/ong_bichos/app/assets/stylesheets
+  /home/cristiano/projetos/ong_bichos/vendor/assets/javascripts
+  /home/cristiano/projetos/ong_bichos/vendor/assets/stylesheets
+  /home/cristiano/.rvm/gems/ruby-2.1.10/gems/jquery-rails-4.3.3/vendor/assets/javascripts
+  /home/cristiano/.rvm/gems/ruby-2.1.10/gems/coffee-rails-4.1.1/lib/assets/javascripts
+  /home/cristiano/.rvm/gems/ruby-2.1.10/gems/turbolinks-source-5.2.0/lib/assets/javascripts):
+    2: <html>
+    3: <head>
+    4:   <title>OngBichos</title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/assets/javascripts/application.js:19
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___1013719687470899581_47203264073060'
+
+
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (12.9ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (25.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-06-10 02:28:06 -0300
+Processing by AnimalsController#index as HTML
+  [1m[35mAnimal Load (0.5ms)[0m  SELECT "animals".* FROM "animals"
+  Rendered animals/index.html.erb within layouts/application (3.7ms)
+Completed 500 Internal Server Error in 678ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (undefined local variable or method `ownwers_path' for #<#<Class:0x0055dcbb99f140>:0x007fd095b55b18>):
+    25:           <a  class = "">  </a>
+    26:         </li>
+    27:         <li class="nav-item">
+    28:           <a href="#"> <%= link_to "Owners", ownwers_path, :class => 'nav-link' %></a>
+    29:         </li>
+    30:       </ul>
+    31: 
+  app/views/layouts/application.html.erb:28:in `_app_views_layouts_application_html_erb___1013719687470899581_47203264073060'
+
+
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (15.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.1ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (15.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (31.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-06-10 02:29:35 -0300
+Processing by AnimalsController#index as HTML
+  [1m[36mAnimal Load (0.7ms)[0m  [1mSELECT "animals".* FROM "animals"[0m
+  Rendered animals/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 99ms (Views: 96.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/animals.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2019-06-10 02:29:35 -0300
+
+
+Started GET "/assets/owners.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2019-06-10 02:29:35 -0300
+
+
+Started GET "/assets/scaffolds.self-95b3827042a9ca60605d63c81736eecef91423dc2e654fe8d4d1081b5b40b318.css?body=1" for 127.0.0.1 at 2019-06-10 02:29:35 -0300
+
+
+Started GET "/assets/application.self-d885a0a66bd595c10edb24f8879f94e334d88be0730c4d7c7a7b57c731c09037.css?body=1" for 127.0.0.1 at 2019-06-10 02:29:36 -0300
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2019-06-10 02:29:36 -0300
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2019-06-10 02:29:36 -0300
+
+
+Started GET "/assets/bootstrap.min.self-a25e528dfbb86d0b84cebc5e9b0944c5be542d72fadbc3fde89316966cd8b2d1.css?body=1" for 127.0.0.1 at 2019-06-10 02:29:36 -0300
+
+
+Started GET "/assets/turbolinks.self-569ee74eaa15c1e2019317ff770b8769b1ec033a0f572a485f64c82ddc8f989e.js?body=1" for 127.0.0.1 at 2019-06-10 02:29:36 -0300
+
+
+Started GET "/assets/bootstrap.min.self-3f55ae7cb1e0ade8ec6caee602a1f92c77404301eca33b891f02f5418470abd1.js?body=1" for 127.0.0.1 at 2019-06-10 02:29:36 -0300
+
+
+Started GET "/assets/jquery-3.3.1.min.self-875821d1e3121b366b94ea86a07f3cbc5c76cb16a319bc62212c03a805ff20e9.js?body=1" for 127.0.0.1 at 2019-06-10 02:29:36 -0300
+
+
+Started GET "/assets/animals.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2019-06-10 02:29:36 -0300
+
+
+Started GET "/assets/owners.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2019-06-10 02:29:36 -0300
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 127.0.0.1 at 2019-06-10 02:29:36 -0300
+
+
+Started GET "/animals/new" for 127.0.0.1 at 2019-06-10 02:29:45 -0300
+Processing by AnimalsController#new as HTML
+  Rendered animals/_form.html.erb (53.5ms)
+  Rendered animals/new.html.erb within layouts/application (55.0ms)
+Completed 500 Internal Server Error in 93ms (ActiveRecord: 1.2ms)
+
+ActionView::Template::Error (undefined method `date' for #<Animal:0x007fd095d936a0>):
+    27:     <%= f.input :data_nascimento %>
+    28:   </div>
+    29:   <div class="field">
+    30:     <%= f.input :date %>
+    31:   </div>
+    32:   <div class="field">
+    33:     <%= f.input :peso %>
+  app/views/animals/_form.html.erb:30:in `block in _app_views_animals__form_html_erb___801452288702021194_70266923936980'
+  app/views/animals/_form.html.erb:1:in `_app_views_animals__form_html_erb___801452288702021194_70266923936980'
+  app/views/animals/new.html.erb:3:in `_app_views_animals_new_html_erb__1452376149773775450_70266923746100'
+
+
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (15.7ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (10.7ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (24.9ms)
+
+
+Started GET "/animals" for 127.0.0.1 at 2019-06-10 02:30:11 -0300
+Processing by AnimalsController#index as HTML
+  [1m[35mAnimal Load (0.6ms)[0m  SELECT "animals".* FROM "animals"
+  Rendered animals/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 69ms (Views: 66.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/animals" for 127.0.0.1 at 2019-06-10 02:30:12 -0300
+Processing by AnimalsController#index as HTML
+  [1m[36mAnimal Load (0.6ms)[0m  [1mSELECT "animals".* FROM "animals"[0m
+  Rendered animals/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 72ms (Views: 69.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-06-10 02:38:08 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_error_messages.html.erb (0.7ms)
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 48ms (Views: 38.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2019-06-10 02:38:30 -0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UxtmeLngQ5fz5KPt3APsuKQ0nW1uQGm6FwetI74d8Z/rMT7by6sm00h1ua0iz2MzZGtx9SX4vXX7nZj56Psu9g==", "user"=>{"email"=>"barbara@barbara.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'barbara@barbara.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["email", "barbara@barbara.com"], ["encrypted_password", "$2a$11$1OhmPQuPhpurHdg40xe8KuAaGimfvDoYMxxxeeOnIWsSwRljhb/xa"], ["created_at", "2019-06-10 05:38:30.579733"], ["updated_at", "2019-06-10 05:38:30.579733"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 145ms (ActiveRecord: 5.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-06-10 02:38:30 -0300
+Processing by AnimalsController#index as HTML
+  [1m[35mAnimal Load (0.1ms)[0m  SELECT "animals".* FROM "animals"
+  Rendered animals/index.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 31ms (Views: 26.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/animals/new" for 127.0.0.1 at 2019-06-10 02:38:39 -0300
+Processing by AnimalsController#new as HTML
+  Rendered animals/_form.html.erb (27.4ms)
+  Rendered animals/new.html.erb within layouts/application (29.9ms)
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 0.6ms)
+
+ActionView::Template::Error (undefined method `date' for #<Animal:0x007fd095f477f8>):
+    27:     <%= f.input :data_nascimento %>
+    28:   </div>
+    29:   <div class="field">
+    30:     <%= f.input :date %>
+    31:   </div>
+    32:   <div class="field">
+    33:     <%= f.input :peso %>
+  app/views/animals/_form.html.erb:30:in `block in _app_views_animals__form_html_erb___801452288702021194_70266923936980'
+  app/views/animals/_form.html.erb:1:in `_app_views_animals__form_html_erb___801452288702021194_70266923936980'
+  app/views/animals/new.html.erb:3:in `_app_views_animals_new_html_erb__1452376149773775450_70266923746100'
+
+
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (16.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (11.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (26.9ms)
+
+
+Started GET "/animals/new" for 127.0.0.1 at 2019-06-10 02:39:15 -0300
+Processing by AnimalsController#new as HTML
+  Rendered animals/_form.html.erb (65.1ms)
+  Rendered animals/new.html.erb within layouts/application (68.8ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 109ms (Views: 105.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/animals.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2019-06-10 02:39:16 -0300
+
+
+Started GET "/assets/owners.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2019-06-10 02:39:16 -0300
+
+
+Started GET "/assets/application.self-d885a0a66bd595c10edb24f8879f94e334d88be0730c4d7c7a7b57c731c09037.css?body=1" for 127.0.0.1 at 2019-06-10 02:39:16 -0300
+
+
+Started GET "/assets/bootstrap.min.self-a25e528dfbb86d0b84cebc5e9b0944c5be542d72fadbc3fde89316966cd8b2d1.css?body=1" for 127.0.0.1 at 2019-06-10 02:39:16 -0300
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2019-06-10 02:39:16 -0300
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2019-06-10 02:39:16 -0300
+
+
+Started GET "/assets/scaffolds.self-95b3827042a9ca60605d63c81736eecef91423dc2e654fe8d4d1081b5b40b318.css?body=1" for 127.0.0.1 at 2019-06-10 02:39:16 -0300
+
+
+Started GET "/assets/turbolinks.self-569ee74eaa15c1e2019317ff770b8769b1ec033a0f572a485f64c82ddc8f989e.js?body=1" for 127.0.0.1 at 2019-06-10 02:39:16 -0300
+
+
+Started GET "/assets/jquery-3.3.1.min.self-875821d1e3121b366b94ea86a07f3cbc5c76cb16a319bc62212c03a805ff20e9.js?body=1" for 127.0.0.1 at 2019-06-10 02:39:16 -0300
+
+
+Started GET "/assets/bootstrap.min.self-3f55ae7cb1e0ade8ec6caee602a1f92c77404301eca33b891f02f5418470abd1.js?body=1" for 127.0.0.1 at 2019-06-10 02:39:16 -0300
+
+
+Started GET "/assets/animals.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2019-06-10 02:39:16 -0300
+
+
+Started GET "/assets/owners.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2019-06-10 02:39:16 -0300
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 127.0.0.1 at 2019-06-10 02:39:16 -0300
+
+
+Started GET "/animals/new" for 127.0.0.1 at 2019-06-10 02:40:56 -0300
+Processing by AnimalsController#new as HTML
+  Rendered animals/_form.html.erb (38.3ms)
+  Rendered animals/new.html.erb within layouts/application (42.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 81ms (Views: 78.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/animals.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2019-06-10 02:40:56 -0300
+
+
+Started GET "/assets/owners.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2019-06-10 02:40:56 -0300
+
+
+Started GET "/assets/scaffolds.self-95b3827042a9ca60605d63c81736eecef91423dc2e654fe8d4d1081b5b40b318.css?body=1" for 127.0.0.1 at 2019-06-10 02:40:56 -0300
+
+
+Started GET "/assets/bootstrap.min.self-a25e528dfbb86d0b84cebc5e9b0944c5be542d72fadbc3fde89316966cd8b2d1.css?body=1" for 127.0.0.1 at 2019-06-10 02:40:56 -0300
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2019-06-10 02:40:56 -0300
+
+
+Started GET "/assets/turbolinks.self-569ee74eaa15c1e2019317ff770b8769b1ec033a0f572a485f64c82ddc8f989e.js?body=1" for 127.0.0.1 at 2019-06-10 02:40:56 -0300
+
+
+Started GET "/assets/application.self-d885a0a66bd595c10edb24f8879f94e334d88be0730c4d7c7a7b57c731c09037.css?body=1" for 127.0.0.1 at 2019-06-10 02:40:56 -0300
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2019-06-10 02:40:56 -0300
+
+
+Started GET "/assets/bootstrap.min.self-3f55ae7cb1e0ade8ec6caee602a1f92c77404301eca33b891f02f5418470abd1.js?body=1" for 127.0.0.1 at 2019-06-10 02:40:56 -0300
+
+
+Started GET "/assets/jquery-3.3.1.min.self-875821d1e3121b366b94ea86a07f3cbc5c76cb16a319bc62212c03a805ff20e9.js?body=1" for 127.0.0.1 at 2019-06-10 02:40:56 -0300
+
+
+Started GET "/assets/animals.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2019-06-10 02:40:56 -0300
+
+
+Started GET "/assets/owners.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2019-06-10 02:40:56 -0300
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 127.0.0.1 at 2019-06-10 02:40:56 -0300
+
+
+Started GET "/assets/bootstrap.min.js.map" for 127.0.0.1 at 2019-06-10 02:41:59 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/bootstrap.min.js.map"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.11) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.11) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.11) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  rack (1.6.11) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.11) lib/rack/handler/webrick.rb:88:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.1ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (32.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (13.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (28.3ms)
+
+
+Started GET "/assets/bootstrap.min.css.map" for 127.0.0.1 at 2019-06-10 02:41:59 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/bootstrap.min.css.map"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.11) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.11) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.11) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  rack (1.6.11) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.11) lib/rack/handler/webrick.rb:88:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.7ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (40.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (16.1ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (33.9ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2019-06-10 02:42:46 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"O2qC4c+f8vt4Bdv4h4uGA5xPEJq4yV7gVOHTWpd2NYuDQNpCvdSXv8OUwbh5RwmIXBD8AvNxii+4e+aAwZDq4g=="}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-06-10 02:42:46 -0300
+Processing by AnimalsController#index as HTML
+  [1m[36mAnimal Load (0.4ms)[0m  [1mSELECT "animals".* FROM "animals"[0m
+  Rendered animals/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 25ms (Views: 23.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/bootstrap.min.js.map" for 127.0.0.1 at 2019-06-10 02:42:46 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/bootstrap.min.js.map"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.11) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.11) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.11) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  rack (1.6.11) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.11) lib/rack/handler/webrick.rb:88:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.8ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (41.0ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (21.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (41.8ms)
+
+
+Started GET "/assets/bootstrap.min.css.map" for 127.0.0.1 at 2019-06-10 02:42:46 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/bootstrap.min.css.map"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.11) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.11) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.11) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  rack (1.6.11) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.11) lib/rack/handler/webrick.rb:88:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (35.1ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (17.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (34.5ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-06-10 02:42:50 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (19.5ms)
+Completed 200 OK in 81ms (Views: 76.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/animals" for 127.0.0.1 at 2019-06-10 02:43:40 -0300
+Processing by AnimalsController#index as HTML
+  [1m[35mAnimal Load (0.7ms)[0m  SELECT "animals".* FROM "animals"
+  Rendered animals/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 72ms (Views: 68.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/animals/new" for 127.0.0.1 at 2019-06-10 02:43:42 -0300
+Processing by AnimalsController#new as HTML
+  Rendered animals/_form.html.erb (68.1ms)
+  Rendered animals/new.html.erb within layouts/application (71.5ms)
+Completed 200 OK in 127ms (Views: 123.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/animals/new" for 127.0.0.1 at 2019-06-10 02:43:43 -0300
+Processing by AnimalsController#new as HTML
+  Rendered animals/_form.html.erb (39.8ms)
+  Rendered animals/new.html.erb within layouts/application (42.0ms)
+Completed 200 OK in 71ms (Views: 69.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/owners.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2019-06-10 02:43:43 -0300
+
+
+Started GET "/assets/animals.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2019-06-10 02:43:43 -0300
+
+
+Started GET "/assets/scaffolds.self-95b3827042a9ca60605d63c81736eecef91423dc2e654fe8d4d1081b5b40b318.css?body=1" for 127.0.0.1 at 2019-06-10 02:43:43 -0300
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2019-06-10 02:43:43 -0300
+
+
+Started GET "/assets/application.self-d885a0a66bd595c10edb24f8879f94e334d88be0730c4d7c7a7b57c731c09037.css?body=1" for 127.0.0.1 at 2019-06-10 02:43:43 -0300
+
+
+Started GET "/assets/bootstrap.min.self-a25e528dfbb86d0b84cebc5e9b0944c5be542d72fadbc3fde89316966cd8b2d1.css?body=1" for 127.0.0.1 at 2019-06-10 02:43:43 -0300
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2019-06-10 02:43:43 -0300
+
+
+Started GET "/assets/turbolinks.self-569ee74eaa15c1e2019317ff770b8769b1ec033a0f572a485f64c82ddc8f989e.js?body=1" for 127.0.0.1 at 2019-06-10 02:43:43 -0300
+
+
+Started GET "/assets/bootstrap.min.self-3f55ae7cb1e0ade8ec6caee602a1f92c77404301eca33b891f02f5418470abd1.js?body=1" for 127.0.0.1 at 2019-06-10 02:43:43 -0300
+
+
+Started GET "/assets/animals.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2019-06-10 02:43:43 -0300
+
+
+Started GET "/assets/jquery-3.3.1.min.self-875821d1e3121b366b94ea86a07f3cbc5c76cb16a319bc62212c03a805ff20e9.js?body=1" for 127.0.0.1 at 2019-06-10 02:43:43 -0300
+
+
+Started GET "/assets/owners.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2019-06-10 02:43:43 -0300
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 127.0.0.1 at 2019-06-10 02:43:43 -0300
+
+
+Started GET "/assets/bootstrap.min.js.map" for 127.0.0.1 at 2019-06-10 02:43:43 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/bootstrap.min.js.map"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.11) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.11) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.11) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  rack (1.6.11) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.11) lib/rack/handler/webrick.rb:88:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.1ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (34.8ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (20.9ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (38.9ms)
+
+
+Started GET "/assets/bootstrap.min.css.map" for 127.0.0.1 at 2019-06-10 02:43:44 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/bootstrap.min.css.map"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.11) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.11) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.11) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  rack (1.6.11) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.11) lib/rack/handler/webrick.rb:88:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (37.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (15.8ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (30.7ms)
+
+
+Started GET "/animals/new" for 127.0.0.1 at 2019-06-10 02:44:36 -0300
+Processing by AnimalsController#new as HTML
+  Rendered animals/_form.html.erb (52.2ms)
+  Rendered animals/new.html.erb within layouts/application (54.7ms)
+Completed 200 OK in 95ms (Views: 91.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/animals.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2019-06-10 02:44:36 -0300
+
+
+Started GET "/assets/owners.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2019-06-10 02:44:36 -0300
+
+
+Started GET "/assets/application.self-d885a0a66bd595c10edb24f8879f94e334d88be0730c4d7c7a7b57c731c09037.css?body=1" for 127.0.0.1 at 2019-06-10 02:44:36 -0300
+
+
+Started GET "/assets/scaffolds.self-95b3827042a9ca60605d63c81736eecef91423dc2e654fe8d4d1081b5b40b318.css?body=1" for 127.0.0.1 at 2019-06-10 02:44:36 -0300
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2019-06-10 02:44:36 -0300
+
+
+Started GET "/assets/bootstrap.min.self-a25e528dfbb86d0b84cebc5e9b0944c5be542d72fadbc3fde89316966cd8b2d1.css?body=1" for 127.0.0.1 at 2019-06-10 02:44:36 -0300
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2019-06-10 02:44:36 -0300
+
+
+Started GET "/assets/turbolinks.self-569ee74eaa15c1e2019317ff770b8769b1ec033a0f572a485f64c82ddc8f989e.js?body=1" for 127.0.0.1 at 2019-06-10 02:44:36 -0300
+
+
+Started GET "/assets/bootstrap.min.self-3f55ae7cb1e0ade8ec6caee602a1f92c77404301eca33b891f02f5418470abd1.js?body=1" for 127.0.0.1 at 2019-06-10 02:44:36 -0300
+
+
+Started GET "/assets/jquery-3.3.1.min.self-875821d1e3121b366b94ea86a07f3cbc5c76cb16a319bc62212c03a805ff20e9.js?body=1" for 127.0.0.1 at 2019-06-10 02:44:36 -0300
+
+
+Started GET "/assets/owners.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2019-06-10 02:44:36 -0300
+
+
+Started GET "/assets/animals.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2019-06-10 02:44:36 -0300
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 127.0.0.1 at 2019-06-10 02:44:36 -0300
+
+
+Started GET "/assets/bootstrap.min.css.map" for 127.0.0.1 at 2019-06-10 02:44:37 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/bootstrap.min.css.map"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.11) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.11) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.11) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  rack (1.6.11) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.11) lib/rack/handler/webrick.rb:88:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (44.9ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.7ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (22.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.7ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (45.3ms)
+
+
+Started GET "/assets/bootstrap.min.js.map" for 127.0.0.1 at 2019-06-10 02:44:37 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/bootstrap.min.js.map"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.11) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.11) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.11) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.11) lib/rack/lock.rb:17:in `call'
+  rack (1.6.11) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.11) lib/rack/handler/webrick.rb:88:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/cristiano/.rvm/rubies/ruby-2.1.10/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (6.1ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.5ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (52.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (14.7ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/cristiano/.rvm/gems/ruby-2.1.10/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (30.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-06-10 02:57:52 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 47ms (Views: 45.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-06-10 02:58:04 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (30.3ms)
+Completed 200 OK in 72ms (Views: 67.3ms | ActiveRecord: 0.0ms)

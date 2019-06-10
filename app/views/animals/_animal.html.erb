@@ -1,0 +1,13 @@
+
+<div class="container">
+    <h2><%= link_to_unless_current animal.nome, animal %></h2>
+    <%= image_tag animal.foto.url %>
+    <%= simple_format animal.especie %>
+    <%= simple_format animal.cor %>
+    <%= simple_format animal.porte %>
+    <%= simple_format animal.data_nascimento %>
+    <%= simple_format animal.peso %>
+    <%= simple_format animal.owner.contato %>
+    <%= simple_format animal.owner.user.email %>
+    <%= simple_format animal.descricao %>
+</div>

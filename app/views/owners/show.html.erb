@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+    <h2><%= link_to_unless_current owner.nome, owner %></h2>
+    <%= simple_format post.contato %>
+    <%= simple_format post.data_nascimento %>
+</div>
+
+<%= link_to 'Edit', edit_owner_path(@owner) %> |
+<%= link_to 'Back', owners_path %>
+

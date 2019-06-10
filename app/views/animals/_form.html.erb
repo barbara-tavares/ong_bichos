@@ -1,0 +1,44 @@
+<%= simple_form_for(@animal) do |f| %>
+  <% if @animal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@animal.errors.count, "error") %> prohibited this animal from being saved:</h2>
+
+      <ul>
+      <% @animal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form>
+    <div class="form-group">
+      <%= f.input :nome %>
+    </div>
+    <div class="field">
+      <%= f.input :especie %>
+    </div>
+    <div class="field">
+      <%= f.input :cor %>
+    </div>
+    <div class="field">
+      <%= f.input :porte %>
+    </div>
+    <div class="field">
+      <%= f.input :data_nascimento %>
+    </div>
+    <div class="field">
+      <%= f.input :peso %>
+    </div>
+    <div class="field">
+      <%= f.input :descricao %>
+    </div>
+    <div>
+      <%= f.input :picture, as: :file %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </form>
+
+<% end %>
