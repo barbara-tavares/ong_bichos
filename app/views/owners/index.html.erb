@@ -27,10 +27,39 @@
     </tbody>
   </table>
 
-  <% else %>
-    <%= link_to 'Complete seu cadastro', new_owner_path %>
+  <% if @animals.count > 0 %>
+    <h3>Meus animais cadastrados</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th colspan="1"></th>
+          <th>Nome</th>
+          <th>Espécie</th>
+          <th>Precisa de</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <% end %>
+      <tbody>
+        <% @animals.each do |animal| %>
+          <tr>
+            <td><%= image_tag animal.foto.url(:medium) %></td>
+            <td><%= animal.nome %></td>
+            <td><%= animal.especie %></td>
+            <td><%= animal.tipo_acao %></td>
+            <td><%= link_to 'Detalhes', animal %></td>
+            <td><%= link_to 'Editar', edit_animal_path(animal) %></td>
+            <td><%= link_to 'Excluir', animal, method: :delete, data: { confirm: 'Certeza que quer excluir?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <%end%>
+
+<% else %>
+  <%= link_to 'Complete seu cadastro', new_owner_path %>
+
+<% end %>
 
 
 

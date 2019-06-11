@@ -6,6 +6,7 @@ class OwnersController < ApplicationController
   # GET /owners.json
   def index
     @owners = Owner.where(user_id: current_user.id)
+    @animals = Animal.where(owner_id: current_user.owner.id)
   end
 
   # GET /owners/1

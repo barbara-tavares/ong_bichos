@@ -17,7 +17,7 @@
     <p>Conheça mais esse bicho</p>
     <%= simple_format animal.descricao %>
     <p>Entre em contato com o seu atual tutor:</p>
-    <%= simple_format animal.owner.nome %>
-    <%= simple_format animal.owner.contato %>
-    <%= simple_format animal.owner.user.email %>
+    <%= simple_format animal.owner.nome if animal.owner %>
+    <%= simple_format animal.owner.contato if animal.owner  %>
+    <%= simple_format animal.owner.user.email if animal.owner  %>
 </div>
