@@ -15,30 +15,39 @@
     <div class="form-group">
       <%= f.input :nome %>
     </div>
+    <div class="form-group">
+      <%= f.input :tipo_acao, label: "Qual a necessidade do animal?", collection: ["Adoção", "Procura", "Resgate"] %>
+    </div>
     <div class="field">
-      <%= f.input :especie %>
+      <%= f.input :especie, collection: ["Cão", "Gato", "Coelho", "Porco", "Cavalo", "Boi", "Tartaruga", "Roedor"]  %>
     </div>
     <div class="field">
       <%= f.input :cor %>
     </div>
     <div class="field">
-      <%= f.input :porte %>
+      <%= f.input :sexo, collection: ["Macho", "Fêmea"]  %>
     </div>
     <div class="field">
-      <%= f.input :data_nascimento %>
+      <%= f.input :porte, collection: ["Pequeno", "Médio", "Grande"] %>
     </div>
     <div class="field">
-      <%= f.input :peso %>
+      <%= f.input :data_nascimento, start_year: Date.today.year - 90, end_year: Date.today.year %>
+    </div>
+    <div class="field">
+      <%= f.input :peso, label: "Peso (Kg)" %>
     </div>
     <div class="field">
       <%= f.input :descricao %>
     </div>
     <div>
-      <%= f.input :picture, as: :file %>
+      <%= f.input :foto, as: :file %>
     </div>
+
     <div class="actions">
       <%= f.submit %>
     </div>
   </form>
+
+  <br>
 
 <% end %>

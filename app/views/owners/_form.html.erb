@@ -18,7 +18,7 @@
     <%= f.input :cpf %>
   </div>
   <div class="field">
-    <%= f.input :data_nascimento %>
+    <%= f.input :data_nascimento, start_year: Date.today.year - 90, end_year: Date.today.year %>
   </div>
   <div class="field">
     <%= f.input :contato %>

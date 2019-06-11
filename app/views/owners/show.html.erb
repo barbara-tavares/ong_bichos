@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
-    <h2><%= link_to_unless_current owner.nome, owner %></h2>
-    <%= simple_format post.contato %>
-    <%= simple_format post.data_nascimento %>
+    <h2><%= simple_format @owner.nome %></h2>
+    <%= simple_format @owner.contato %>
+    <%= simple_format @owner.data_nascimento.to_s %>
+    <%= simple_format @owner.user.email %>
 </div>
 
 <%= link_to 'Edit', edit_owner_path(@owner) %> |

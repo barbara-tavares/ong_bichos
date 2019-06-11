@@ -43,6 +43,9 @@ gem 'ransack'
 gem "paperclip"
 gem 'bootstrap-sass'
 
+gem 'dotenv-rails', :require => 'dotenv/rails-now'
+gem "recaptcha", require: "recaptcha/rails"
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

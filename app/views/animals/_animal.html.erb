@@ -1,13 +1,23 @@
 
 <div class="container">
-    <h2><%= link_to_unless_current animal.nome, animal %></h2>
+    <h2>Conheça este bicho que precisa de: <%= simple_format animal.tipo_acao %></h2>
+    <h3><%= link_to_unless_current animal.nome, animal %></h3>
     <%= image_tag animal.foto.url %>
     <%= simple_format animal.especie %>
+    <p>Cor</p>
     <%= simple_format animal.cor %>
+    <p>Sexo</p>
+    <%= simple_format animal.sexo %>
+    <p>Porte</p>
     <%= simple_format animal.porte %>
-    <%= simple_format animal.data_nascimento %>
-    <%= simple_format animal.peso %>
+    <p>Data de nascimento</p>
+    <%= simple_format animal.data_nascimento.to_s %>
+    <p>Peso</p>
+    <%= simple_format animal.peso.to_s %>
+    <p>Conheça mais esse bicho</p>
+    <%= simple_format animal.descricao %>
+    <p>Entre em contato com o seu atual tutor:</p>
+    <%= simple_format animal.owner.nome %>
     <%= simple_format animal.owner.contato %>
     <%= simple_format animal.owner.user.email %>
-    <%= simple_format animal.descricao %>
 </div>

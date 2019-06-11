@@ -1,10 +1,11 @@
 class OwnersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_owner, only: [:show, :edit, :update, :destroy]
 
   # GET /owners
   # GET /owners.json
   def index
-    @owners = Owner.all
+    @owners = Owner.where(user_id: current_user.id)
   end
 
   # GET /owners/1
@@ -25,7 +26,8 @@ class OwnersController < ApplicationController
   # POST /owners.json
   def create
     @owner = Owner.new(owner_params)
-
+    @owner.user_id = current_user.id
+    
     respond_to do |format|
       if @owner.save
         format.html { redirect_to @owner, notice: 'Owner was successfully created.' }
@@ -69,6 +71,6 @@ class OwnersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def owner_params
-      params.require(:owner).permit(:nome, :cpf, :data_nascimento)
+      params.require(:owner).permit(:nome, :cpf, :data_nascimento, :contato, :user_id)
     end
 end

@@ -25,7 +25,9 @@ class AnimalsController < ApplicationController
   # POST /animals
   # POST /animals.json
   def create
+    @owner = Owner.find(current_user.owner.id)
     @animal = Animal.new(animal_params)
+    @animal.owner_id = @owner.id
 
     respond_to do |format|
       if @animal.save
@@ -70,6 +72,6 @@ class AnimalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def animal_params
-      params.require(:animal).permit(:nome, :cor, :porte, :data_nascimento, :peso)
+      params.require(:animal).permit(:nome, :cor, :porte, :data_nascimento, :peso, :tipo_acao, :owner_id, :foto, :sexo)
     end
 end

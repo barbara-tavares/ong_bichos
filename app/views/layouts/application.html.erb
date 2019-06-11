@@ -19,13 +19,13 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a  href="#"> <%= link_to "Animals", animals_path, :class => 'nav-link' %></a>
+          <a  href="#"> <%= link_to "Animais", animals_path, :class => 'nav-link' %></a>
         </li>
         <li class="nav-item active">
           <a  class = "">  </a>
         </li>
         <li class="nav-item">
-          <a href="#"> <%= link_to "Owners", owners_path, :class => 'nav-link' %></a>
+          <a href="#"> <%= link_to "Minha Conta", owners_path, :class => 'nav-link' %></a>
         </li>
       </ul>
 
@@ -39,13 +39,6 @@
         <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
       <% end %>
 
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
-
     </div>
   </nav>
 </header>
@@ -56,7 +49,13 @@
 
 <footer class="footer">
   <div class="navbar fixed-bottom">
-    <span class="text-muted">Site ONG Bichos - build on Ruby on Rails 4.</span>
+    <span class="text-muted">Site ONG Bichos</span>
+     <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
   </div>
 </footer>
 
